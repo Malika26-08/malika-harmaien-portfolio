@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts — no external requests at runtime */
+@import "@fontsource-variable/fraunces/standard.css";
+@import "@fontsource-variable/fraunces/standard-italic.css";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+
+/* ---------------------------------------------------------------
+   Design tokens
+   ink        — primary dark (bg for dark sections, text on paper)
+   ink-soft   — secondary dark, subtle depth within dark sections
+   paper      — light neutral base (cool stone, not warm cream)
+   paper-dim  — slightly deeper paper tone for section separation
+   line       — hairline border colour
+   signal     — primary accent: teal/emerald, used for links & graph lines
+   amber      — secondary accent, reserved for the research/publication marker
+----------------------------------------------------------------*/
+@theme {
+  --color-ink: #0e1116;
+  --color-ink-soft: #161b22;
+  --color-ink-line: rgba(237, 235, 227, 0.12);
+  --color-paper: #e9ebe4;
+  --color-paper-dim: #dfe2d9;
+  --color-paper-line: #cbcfc0;
+  --color-signal: #21a68c;
+  --color-signal-bright: #2fd3b3;
+  --color-amber: #d99a3d;
+  --color-ink-70: rgba(14, 17, 22, 0.7);
+  --color-ink-50: rgba(14, 17, 22, 0.52);
+  --color-paper-70: rgba(233, 235, 228, 0.7);
+  --color-paper-50: rgba(233, 235, 228, 0.5);
+
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-sans: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  --breakpoint-xs: 30rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
